@@ -288,6 +288,48 @@ public class Game {
         return mergedColumn;
     }
 
+    public boolean isGameOver() {
+
+        // Check for empty cells
+        for (int row = 0; row < 4; row++) {
+
+            for (int column = 0; column < 4; column++) {
+
+                if (board[row][column] == 0) {
+                    return false;
+                }
+            }
+        }
+
+        // Check for horizontal merges
+        for (int row = 0; row < 4; row++) {
+
+            for (int column = 0; column < 3; column++) {
+
+                if (board[row][column] == board[row][column + 1]) {
+                    return false;
+                }
+            }
+        }
+
+        // Check for vertical merges
+        for (int row = 0; row < 3; row++) {
+
+            for (int column = 0; column < 4; column++) {
+
+                if (board[row][column] == board[row + 1][column]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
     public void displayBoard() {
 
         System.out.println("\nScore: " + score);
